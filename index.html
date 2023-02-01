@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>Tax Calculator</title>
+  </head>
+  <body>
+    <h1>Tax Calculator</h1>
+   <form id="taxForm">
+  <label for="salary">Enter your salary:</label>
+  <input type="number" id="salary" name="salary">
+  <button type="submit">Submit</button>
+</form>
+
+<div id="result">
+  <p>Old regime tax payable: <span id="oldRegimeResult"></span></p>
+  <p>New regime tax payable: <span id="newRegimeResult"></span></p>
+  <p>Latest new regime tax payable: <span id="latestNewRegimeResult"></span></p>
+</div>
+
+<script>
+  const form = document.querySelector("#taxForm");
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const salary = parseInt(document.querySelector("#salary").value);
+    
+    document.querySelector("#oldRegimeResult").innerHTML = oldRegime(salary);
+    document.querySelector("#newRegimeResult").innerHTML = newRegime(salary);
+    document.querySelector("#latestNewRegimeResult").innerHTML = latestNewRegime(salary);
+  });
+
+  function oldRegime(salary) {
+    let tax = 0;
+    if (salary <= 250000) {
+      tax = 0;
+    } else if (salary <= 500000) {
+      tax = (salary - 250000) * 0.05;
+    } else if (salary <= 1000000) {
+      tax = (salary - 500000) * 0.2 + 12500;
+    } else {
+      tax = (salary - 1000000) * 0.3 + 112500;
+    }
+    return tax;
+  }
+
+  function newRegime(salary) {
+    let tax = 0;
+    if (salary <= 250000) {
+      tax = 0;
+    } else if (salary <= 500000) {
+      tax = (salary - 250000) * 0.05;
+    } else if (salary <= 750000) {
+      tax = (salary - 500000) * 0.1 + 12500;
+    } else if (salary <= 1000000) {
+      tax = (salary - 750000) * 0.15 + 37500;
+    } else if (salary <= 1250000) {
+      tax = (salary - 1000000) * 0.2 + 75000;
+    } else if (salary <= 1500000) {
+      tax = (salary - 1250000) * 0.25 + 125000;
+    } else {
+      tax = (salary - 1500000) * 0.3 + 187500;
+    }
+    return tax;
+  }
+
+  function latestNewRegime(salary) {
+    let tax = 0;
+    if (salary <= 300000) {
+      tax = 0;
+    } else if (salary <= 600000) {
+      tax = (salary - 300000) * 0.05;
+    } else if (salary <= 900000) {
+      tax = 15000 + 0.1 * (salary - 600000);
+    } else if (salary <= 1200000) {
+      tax = 45000 + 0.15 * (salary - 900000);
+    } 
+      else if (salary <= 1500000) {
+      tax = 90000 + 0.2 * (salary - 1200000);
+    }
+      else {
+        tax = 150000 + 0.3 * (salary - 1500000);
+      }
+    </script>
+  </body>
+</html>
