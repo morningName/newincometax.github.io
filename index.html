@@ -38,12 +38,20 @@
       .banner span {
         margin-right: 10px;
       }
-      .line {
+      .welcome {
        font-size: 20px;
         font-weight: normal;
         text-align: center;
         padding: 20px;
         font-style:italic
+      }
+       .rollout {
+        font-size: 20px;
+        font-weight: normal;
+        text-align: center;
+        padding: 20px;
+        font-style:italic;
+        color: blue
       }
       #result {
         margin-top: 50px;
@@ -57,9 +65,10 @@
   </head>
   <body>
     <h1 style="text-align: center; margin-top: 50px;">Kitna Paisa Bacha Application</h1>
-    <div class="line" >  Welcoming you to this beautiful application </div>
+    <div class="welcome" >  Welcoming you to this beautiful application </div>
+    <div class="rollout">Next feature: Rolling out for salary with deduction & exemption</div>
     <form id="taxForm">
-      <label for="salary">Enter your salary:</label>
+      <label for="salary">Enter taxable income:</label>
       <input type="number" id="salary" name="salary">
       <button type="submit">Submit</button>
     </form>
@@ -86,8 +95,8 @@
     document.querySelector("#latestNewRegimeResult").innerHTML = latestNewRegime(salary);
     
     
-    let result = "<p>Old regime tax payable (Deduction Not considered): <span>"  + oldRegime(salary) + "</span></p>";
-    result += "<p>New regime tax payable: <span>" + newRegime(salary) + "</span></p>";
+    let result = "<p>Old regime tax payable: <span>"  + oldRegime(salary) + "</span></p>";
+    result += "<p>Deprecated New regime tax payable: <span>" + newRegime(salary) + "</span></p>";
     result += "<p>Latest new regime tax payable: <span>" + latestNewRegime(salary) + "</span></p>";
     result += "<p> Old vs latest tax save: <span>" + reductionPercentage(oldRegime(salary), latestNewRegime(salary)) + "%" + "</span></p>";
     result += "<p> New vs latest tax save: <span>" + reductionPercentage(newRegime(salary), latestNewRegime(salary)) + "%" + "</span></p>";
@@ -96,7 +105,6 @@
     document.querySelector("#result").innerHTML = result;
 
     document.querySelector("#banner").style.display = "block";
-
    
   });
   
