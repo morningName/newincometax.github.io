@@ -107,6 +107,10 @@
 
   function oldRegime(salary) {
     let tax = 0;
+    if (salary <= 500000)
+    {
+     return 0;
+    }
     if (salary <= 250000) {
       tax = 0;
     } else if (salary <= 500000) {
@@ -121,6 +125,10 @@
 
   function newRegime(salary) {
     let tax = 0;
+    if (salary <= 500000)
+    {
+     return 0;
+    }
     if (salary <= 250000) {
       tax = 0;
     } else if (salary <= 500000) {
@@ -141,6 +149,10 @@
 
   function latestNewRegime(salary) {
     let tax = 0;
+    if (salary <= 700000)
+    {
+     return 0;
+    }
     if (salary <= 300000) {
       tax = 0;
     } else if (salary <= 600000) {
@@ -161,4 +173,3 @@
     </script>
   </body>
 </html>
-
