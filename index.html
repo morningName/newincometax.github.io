@@ -86,12 +86,13 @@
     document.querySelector("#latestNewRegimeResult").innerHTML = latestNewRegime(salary);
     
     
-    let result = "<p>Old regime tax payable: <span>" + oldRegime(salary) + "</span></p>";
+    let result = "<p>Old regime tax payable (Deduction Not considered): <span>"  + oldRegime(salary) + "</span></p>";
     result += "<p>New regime tax payable: <span>" + newRegime(salary) + "</span></p>";
     result += "<p>Latest new regime tax payable: <span>" + latestNewRegime(salary) + "</span></p>";
     result += "<p> Old vs latest tax save: <span>" + reductionPercentage(oldRegime(salary), latestNewRegime(salary)) + "%" + "</span></p>";
     result += "<p> New vs latest tax save: <span>" + reductionPercentage(newRegime(salary), latestNewRegime(salary)) + "%" + "</span></p>";
     
+    result += "<p> Refresh page for new results </p>";
     document.querySelector("#result").innerHTML = result;
 
     document.querySelector("#banner").style.display = "block";
